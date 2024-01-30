@@ -9,7 +9,7 @@
 void shuffleFiles(const char *path) {
     DIR *dir = opendir(path);
     if (dir == NULL) {
-        perror("Erro ao abrir o diretório");
+        perror("Error opening directory");
         exit(EXIT_FAILURE);
     }
 
@@ -49,7 +49,7 @@ void shuffleFiles(const char *path) {
         sprintf(oldPath, "%s/%s", path, files[i]);
         sprintf(newPath, "%s/%s", tempPath, files[i]);
         if (rename(oldPath, newPath) != 0) {
-            perror("Erro ao renomear arquivo");
+            perror("Error when renaming file");
             exit(EXIT_FAILURE);
         }
     }
@@ -60,7 +60,7 @@ void shuffleFiles(const char *path) {
         sprintf(oldPath, "%s/%s", tempPath, files[i]);
         sprintf(newPath, "%s/%d_%s", path, i + 1, files[i]);
         if (rename(oldPath, newPath) != 0) {
-            perror("Erro ao renomear arquivo");
+            perror("Error when renaming file");
             exit(EXIT_FAILURE);
         }
     }
@@ -74,10 +74,10 @@ void shuffleFiles(const char *path) {
 }
 
 int main() {
-    const char *path = "C:/Users/gusta/Downloads/musicas"; //colocar diretorio das musicas
+    const char *path = "C:/Users/gusta/Downloads/musicas"; // put music directory
     shuffleFiles(path);
 
-    printf("As musicas foram randomizadas com sucesso!\n");
+    printf("The songs were successfully randomized!\n");
 
     return 0;
 }
